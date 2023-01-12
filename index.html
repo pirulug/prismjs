@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="prism.js"></script>
+    <link rel="stylesheet" href="prism.css">
+  </head>
+  <body>
+    <p>Puedes crear un paginador de tablas en PHP utilizando la clase &quot;PDO&quot; para conectarte a tu base de datos y luego utilizar una combinación de código PHP y HTML para mostrar los datos en una tabla y agregar enlaces para navegar entre las páginas.</p>
+    <p>Aquí hay un ejemplo de código que muestra cómo crear un paginador de tablas en PHP:</p>
+    <pre>
+      <code class="language-php">
+        &lt;?php
+// Establecer la conexión a la base de datos
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+// Establecer el número de registros por página
+$records_per_page = 5;
+
+// Obtener el número total de registros
+$total_records = $conn-&gt;query("SELECT COUNT(*) FROM table_name")-&gt;fetchColumn();
+
+// Calcular el número total de páginas
+$total_pages = ceil($total_records / $records_per_page);
+
+// Obtener la página actual
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = 1;
+}
+
+// Calcular el registro inicial
+$start_from = ($page-1) * $records_per_page;
+
+// Obtener los registros de la tabla
+$stmt = $conn-&gt;prepare("SELECT * FROM table_name LIMIT :start_from, :records_per_page");
+$stmt-&gt;bindParam(':start_from', $start_from, PDO::PARAM_INT);
+$stmt-&gt;bindParam(':records_per_page', $records_per_page, PDO::PARAM_INT);
+$stmt-&gt;execute();
+$results = $stmt-&gt;fetchAll();
+
+// Mostrar los registros en una tabla HTML
+echo "&lt;table&gt;";
+foreach ($results as $row) {
+    echo "&lt;tr&gt;";
+    echo "&lt;td&gt;" . $row['column1'] . "&lt;/td&gt;";
+    echo "&lt;td&gt;" . $row['column2'] . "&lt;/td&gt;";
+    echo "&lt;td&gt;" . $row['column3'] . "&lt;/td&gt;";
+    echo "&lt;/tr&gt;";
+}
+echo "&lt;/table&gt;";
+
+// Mostrar enlaces para navegar entre las páginas
+echo "&lt;div class='pagination'&gt;";
+for ($i=1; $i&lt;=$total_pages; $i++) {
+    echo "&lt;a href='pagination.php?page=".$i."'&gt;".$i."&lt;/a&gt;";
+}
+echo "&lt;/div&gt;";
+?&gt;
+      </code>
+    </pre>
+  </body>
+</html>
