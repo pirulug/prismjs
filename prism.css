@@ -3,8 +3,9 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: #ccc;
   background: 0 0;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 1em;
+  font-family: "Victor Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
+  font-size: 0.9em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -38,19 +39,20 @@ pre[class*="language-"] {
 .token.comment,
 .token.doctype,
 .token.prolog {
+  font-style: italic;
   color: #999;
 }
 .token.punctuation {
-  color: #ccc;
+  color: #1342eb;
 }
 .token.attr-name,
 .token.deleted,
 .token.namespace,
 .token.tag {
-  color: #e2777a;
+  color: #d84d52;
 }
 .token.function-name {
-  color: #6196cc;
+  color: #ffffff;
 }
 .token.boolean,
 .token.function,
@@ -68,7 +70,7 @@ pre[class*="language-"] {
 .token.important,
 .token.keyword,
 .token.selector {
-  color: #cc99cd;
+  color: #d95bba;
 }
 .token.attr-value,
 .token.char,
@@ -93,5 +95,5 @@ pre[class*="language-"] {
   cursor: help;
 }
 .token.inserted {
-  color: green;
+  color: #518000;
 }
