@@ -1,0 +1,52 @@
+name: Versioning Workflow
+
+on:
+  push:
+    branches:
+      - main  # o la rama principal que uses
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bump version and create tag
+        id: bump_version
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          npm version patch -m "Bump version to %s [skip ci]"
+          git push origin --follow-tags
+
+      - name: Update file version
+        run: |
+          NEW_VERSION=$(npm pkg get version | tr -d '"')
+          sed -i "s/version: .*/version: $NEW_VERSION/" path/to/your/file.yml
+
+      - name: Commit updated file
+        run: |
+          git add path/to/your/file.yml
+          git commit -m "Update file version to $NEW_VERSION [skip ci]"
+          git push origin main
+
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.bump_version.outputs.new_version }}
+          release_name: Release v${{ steps.bump_version.outputs.new_version }}
+          body: "Description of the release"
+          draft: false
+          prerelease: false
