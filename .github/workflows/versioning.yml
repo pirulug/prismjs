@@ -3,7 +3,7 @@ name: Versioning Workflow
 on:
   push:
     branches:
-      - main  # o la rama principal que uses
+      - master  # o la rama principal que uses
 
 jobs:
   version:
