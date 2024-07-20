@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="prism.js"></script>
-    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="prism.css" />
   </head>
   <body>
-    <p>Puedes crear un paginador de tablas en PHP utilizando la clase &quot;PDO&quot; para conectarte a tu base de datos y luego utilizar una combinación de código PHP y HTML para mostrar los datos en una tabla y agregar enlaces para navegar entre las páginas.</p>
-    <p>Aquí hay un ejemplo de código que muestra cómo crear un paginador de tablas en PHP:</p>
-    <pre>
-      <code class="language-php">
-        &lt;?php
+    <pre><code class="language-php">&lt;?php
 // Establecer la conexión a la base de datos
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
@@ -60,8 +56,6 @@ for ($i=1; $i&lt;=$total_pages; $i++) {
     echo "&lt;a href='pagination.php?page=".$i."'&gt;".$i."&lt;/a&gt;";
 }
 echo "&lt;/div&gt;";
-?&gt;
-      </code>
-    </pre>
+?&gt;</code></pre>
   </body>
 </html>
