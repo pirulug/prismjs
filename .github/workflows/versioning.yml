@@ -24,8 +24,8 @@ jobs:
       - name: Bump version and create tag
         id: bump_version
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "pirulug@gmail.com"
+          git config --global user.name "Pirulug"
           npm version patch -m "Bump version to %s [skip ci]"
           git push origin --follow-tags
 
