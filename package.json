@@ -1,0 +1,17 @@
+{
+  "name": "primsjs",
+  "version": "0.0.1",
+  "description": "PrimsJS",
+  "main": "primsjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pirulug/prismjs.git"
+  },
+  "keywords": [
+    "mi",
+    "libreria",
+    "ejemplo"
+  ],
+  "author": "Pirulug pirulug.github.io",
+  "license": "MIT"
+}
