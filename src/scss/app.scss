@@ -28,6 +28,10 @@ pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
+  background: #16191b;
+  border-radius: 0.5rem;
+
+  scrollbar-color: #888 #16191b;
 }
 
 :not(pre) > code[class*="language-"],
