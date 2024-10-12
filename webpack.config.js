@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  entry: { prims: "./src/js/app.js" },
+  entry: { prism: "./src/js/app.js" },
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "dist"),
@@ -20,10 +20,10 @@ module.exports = {
           format: {
             comments: false, // Elimina otros comentarios
             preamble: `/*! 
-    * PiruBbEditor (https://github.com/pirulug)
-    * Copyright 2024 Pirulug (https://github.com/pirulug)
-    * Licensed under MIT
-    */`,
+* PiruBbEditor (https://github.com/pirulug)
+* Copyright 2024 Pirulug (https://github.com/pirulug)
+* Licensed under MIT
+*/`,
           },
         },
         extractComments: false,
@@ -37,10 +37,10 @@ module.exports = {
     // Banner
     new BannerPlugin({
       banner: `/*!
-  * PiruBbEditor (https://github.com/pirulug)
-  * Copyright 2024 Pirulug (https://github.com/pirulug)
-  * Licensed under MIT
-  */`,
+* PiruBbEditor (https://github.com/pirulug)
+* Copyright 2024 Pirulug (https://github.com/pirulug)
+* Licensed under MIT
+*/`,
       raw: true,
       entryOnly: false,
     }),
