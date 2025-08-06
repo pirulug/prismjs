@@ -20,9 +20,9 @@ module.exports = {
           format: {
             comments: false, // Elimina otros comentarios
             preamble: `/*! 
-* PiruBbEditor (https://github.com/pirulug)
-* Copyright 2024 Pirulug (https://github.com/pirulug)
-* Licensed under MIT
+* Copyright 2025 Pirulug (https://github.com/pirulug)
+* PrismJS 1.29.0 (https://prismjs.com)
+* Licensed MIT
 */`,
           },
         },
@@ -37,9 +37,9 @@ module.exports = {
     // Banner
     new BannerPlugin({
       banner: `/*!
-* PiruBbEditor (https://github.com/pirulug)
-* Copyright 2024 Pirulug (https://github.com/pirulug)
-* Licensed under MIT
+* Copyright 2025 Pirulug (https://github.com/pirulug)
+* PrismJS 1.29.0 (https://prismjs.com)
+* Licensed MIT
 */`,
       raw: true,
       entryOnly: false,

@@ -1,4 +1,5 @@
 /* PrismJS 1.29.0 */
+
 /// <reference lib="WebWorker"/>
 
 var _self =

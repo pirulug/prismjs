@@ -1,3 +1,3 @@
 import "../scss/app.scss";
 
-import "./modules/prims";
+import "./modules/prism";
