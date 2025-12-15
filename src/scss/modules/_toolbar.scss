@@ -1,0 +1,66 @@
+// _toolbar.scss
+
+// Contenedor principal que envuelve todo (Header + Pre)
+.code-wrapper {
+  margin: 1.5em 0;
+  border-radius: 0.5rem;
+  border: 1px solid var(--prism-border);
+  background: var(--prism-bg);
+  overflow: hidden; // Para que el header respete los bordes redondeados
+  transition: border-color 0.3s ease;
+}
+
+// La barra superior
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--prism-toolbar-bg);
+  border-bottom: 1px solid var(--prism-toolbar-border);
+  font-family: system-ui, -apple-system, sans-serif; // Fuente limpia UI
+  user-select: none;
+}
+
+// El texto del lenguaje (ej: "JAVASCRIPT")
+.code-language {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--prism-toolbar-text);
+  letter-spacing: 0.05em;
+}
+
+// El botón de copiar
+.copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--prism-toolbar-text);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--prism-btn-hover);
+    color: var(--prism-text); // Se ilumina al pasar el mouse
+  }
+
+  // Icono SVG
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+}
+
+// Ajustes al PRE para que encaje bien en el wrapper
+.code-wrapper pre[class*="language-"] {
+  margin: 0 !important; // Quitamos margen externo porque el wrapper ya lo tiene
+  border: none !important; // El borde lo maneja el wrapper
+  border-radius: 0 !important; // Quitamos bordes redondeados (ya los tiene el wrapper)
+}
