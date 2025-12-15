@@ -1,6 +1,6 @@
 {
   "name": "primsjs",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "PrimsJS",
   "main": "webpack.config.js",
   "scripts": {
