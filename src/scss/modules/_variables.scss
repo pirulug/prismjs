@@ -1,66 +1,55 @@
-// _variables.scss
-
 :root {
-  // =========================================
-  // MODO CLARO (Día - Colores profundos y ricos)
-  // =========================================
-  --prism-bg: #ffffff; // Fondo fijo
-  --prism-text: #2c3e50; // Texto base casi negro
-  --prism-border: #dce1e6;
-  --prism-scrollbar: #95a5a6;
+  --prism-bg: #ffffff;
+  --prism-text: #1a1f23;
+  --prism-border: #e1e4e8;
+  --prism-scrollbar: #0000000F;
 
-  // Paleta inspirada en Monokai/Darcula adaptada para fondo blanco
-  --prism-comment: #7f8c8d; // Gris pizarra
-  --prism-string: #8e6a00; // Oro oscuro/Mostaza (en lugar de amarillo)
-  --prism-punctuation: #535a60; // Gris medio
+  --prism-comment: #6b7280;
+  --prism-string: #0b7f2f;
+  --prism-punctuation: #4b5563;
+  
+  --prism-keyword: #e91e63;
+  --prism-function: #2563eb;
+  --prism-class: #0891b2;
+  --prism-variable: #ea580c;
+  --prism-number: #7c3aed;
+  --prism-tag: #be185d;
+  --prism-attr-name: #059669;
+  --prism-property: #0284c7;
+  --prism-selector: #9333ea;
+  --prism-operator: #dc2626;
+  --prism-line-number: #4b5563;
 
-  // Colores semánticos ricos
-  --prism-keyword: #cf005f; // Magenta profundo (Keywords: if, function)
-  --prism-function: #007a27; // Verde bosque rico (Funciones)
-  --prism-class: #cf005f; // Mismo que keyword (Clases)
-  --prism-variable: #d35400; // Naranja quemado (Variables)
-  --prism-number: #6c3dda; // Violeta profundo (Números, booleanos)
-  --prism-tag: #006b75; // Verde azulado/Teal (Etiquetas HTML)
-  --prism-attr-name: #d35400; // Naranja (Atributos)
-  --prism-operator: #c0392b; // Rojo profundo (Operadores =, +, -)
-  --prism-line-number: #bdc3c7;
-
-  // --- VARIABLES NUEVAS PARA LA TOOLBAR ---
-  // Modo Claro: Barra gris claro sutil
-  --prism-toolbar-bg: #f3f4f6;
-  --prism-toolbar-text: #5e687e;
+  --prism-toolbar-bg: #f8f9fa;
+  --prism-toolbar-text: #4b5563;
   --prism-toolbar-border: #e1e4e8;
-  --prism-btn-hover: #e6e8eb;
+  --prism-btn-hover: #0000000F;
 }
 
-// =========================================
-// MODO OSCURO (Noche - Vibrante "Monokai/Darcula")
-// =========================================
 [data-bs-theme="dark"] {
-  --prism-bg: #16191b; // Fondo fijo
-  --prism-text: #f8f8f2; // Blanco roto estilo Monokai
-  --prism-border: #2c313a;
-  --prism-scrollbar: #4b5362;
+  --prism-bg: #000000;
+  --prism-text: #e0dfd0;
+  --prism-border: #222222;
+  --prism-scrollbar: #FFFFFF0F;
 
-  // Paleta Neón Vibrante
-  --prism-comment: #6272a4; // Gris azulado (Dracula)
-  --prism-string: #f1fa8c; // Amarillo pálido (Monokai Strings)
-  --prism-punctuation: #f8f8f2; // Blanco roto
+  --prism-comment: #828282;
+  --prism-string: #faff00;
+  --prism-punctuation: #e0dfd0;
 
-  // Colores semánticos vibrantes
-  --prism-keyword: #ff79c6; // Rosa vibrante (Monokai Keywords)
-  --prism-function: #50fa7b; // Verde lima neón (Monokai Functions)
-  --prism-class: #8be9fd; // Cian brillante (Dracula Classes/Types)
-  --prism-variable: #ffb86c; // Naranja vibrante (Monokai Variables)
-  --prism-number: #bd93f9; // Morado pastel (Monokai Numbers)
-  --prism-tag: #ff5555; // Rojo/Rosa suave (Etiquetas HTML)
-  --prism-attr-name: #f1fa8c; // Amarillo (Atributos)
-  --prism-operator: #ff79c6; // Rosa (Operadores)
-  --prism-line-number: #6272a4;
+  --prism-keyword: #ff0077;
+  --prism-function: #00ffaa;
+  --prism-class: #00e5ff;
+  --prism-variable: #ffaa00;
+  --prism-number: #cc66ff;
+  --prism-tag: #ff0055;
+  --prism-attr-name: #50fa7b;
+  --prism-property: #00bfff;
+  --prism-selector: #3691ff;
+  --prism-operator: #ff22aa;
+  --prism-line-number: #808080;
 
-  // Modo Oscuro: Barra un poco más clara que el fondo negro
-  --prism-toolbar-bg: #1f2428;
-  --prism-toolbar-text: #9ca3af;
-  --prism-toolbar-border: #30363d;
-  --prism-btn-hover: #2d333b;
+  --prism-toolbar-bg: #0a0a0a;
+  --prism-toolbar-text: #808080;
+  --prism-toolbar-border: #222222;
+  --prism-btn-hover: #FFFFFF0F;
 }

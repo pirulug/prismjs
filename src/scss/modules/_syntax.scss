@@ -1,8 +1,4 @@
-// _syntax.scss
-
 .token {
-
-  // --- Comentarios y Puntuación ---
   &.comment,
   &.prolog,
   &.doctype,
@@ -15,7 +11,6 @@
     color: var(--prism-punctuation);
   }
 
-  // --- Strings y Caracteres ---
   &.string,
   &.char,
   &.attr-value,
@@ -23,35 +18,43 @@
     color: var(--prism-string);
   }
 
-  // --- Keywords y Control ---
   &.keyword,
   &.atrule,
   &.important {
     color: var(--prism-keyword);
-    font-weight: bold; // Darcula/Monokai suelen poner negrita aquí
+    font-weight: bold;
   }
 
-  // --- Funciones y Clases ---
   &.function,
   &.builtin {
     color: var(--prism-function);
   }
 
   &.class-name,
-  &.namespace {
+  &.namespace,
+  &.class,
+  &.id {
     color: var(--prism-class);
   }
 
-  // --- Variables y Propiedades ---
-  &.variable,
-  &.property,
-  &.constant,
-  &.attr-name,
-  &.selector {
+  &.variable {
     color: var(--prism-variable);
   }
 
-  // --- Números y Booleanos ---
+  &.property {
+    color: var(--prism-property);
+  }
+
+  &.selector {
+    color: var(--prism-selector);
+    font-weight: bold;
+  }
+
+  &.constant,
+  &.attr-name {
+    color: var(--prism-attr-name);
+  }
+
   &.number,
   &.boolean,
   &.symbol,
@@ -59,17 +62,10 @@
     color: var(--prism-number);
   }
 
-  // --- HTML/XML Tags ---
   &.tag {
     color: var(--prism-tag);
   }
 
-  // --- Atributos específicos ---
-  &.attr-name {
-    color: var(--prism-attr-name);
-  }
-
-  // --- Operadores y Regex ---
   &.operator,
   &.entity,
   &.url,
@@ -77,7 +73,6 @@
     color: var(--prism-operator);
   }
 
-  // --- Modificadores ---
   &.important,
   &.bold {
     font-weight: bold;

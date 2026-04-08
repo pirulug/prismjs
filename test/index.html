@@ -1,108 +1,181 @@
 <!DOCTYPE html>
-<!-- <html lang="es" > -->
-<!-- <html lang="es" data-bs-theme="light"> -->
 <html lang="es" data-bs-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrismJS</title>
+  <title>PrismJS - Multi-Language Demo</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  <script src="../dist/js/prism.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../dist/css/prism.css" />
+  <script src="../dist/js/prism.js"></script>
 </head>
 
 <body>
-  <div class="container-fluid">
-    <h1>PrisJS</h1>
+  <div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <div>
+        <h1 class="display-4 fw-bold">PrismJS</h1>
+        <p class="lead text-muted">Custom Build by Pirulug - Soporte Multi-lenguaje</p>
+      </div>
+      <button id="theme-toggle" class="btn btn-outline-secondary">
+        Modo Claro
+      </button>
+    </div>
 
-    <pre><code class="language-treeview">root_folder/
-|-- a first folder/
-|   |-- holidays.mov
-|   |-- javascript-file.js
-|   `-- some_picture.jpg
-|-- documents/
-|   |-- spreadsheet.xls
-|   |-- manual.pdf
-|   |-- document.docx
-|   `-- presentation.ppt
-|       `-- test
-|-- empty_folder/
-|-- going deeper/
-|   |-- going deeper/
-|   |   `-- going deeper/
-|   |        `-- going deeper/
-|   |            `-- .secret_file
-|   |-- style.css
-|   `-- index.html
-|-- music and movies/
-|   |-- great-song.mp3
-|   |-- S01E02.new.episode.avi
-|   |-- S01E02.new.episode.nfo
-|   `-- track 1.cda
-|-- .gitignore
-|-- .htaccess
-|-- .npmignore
-|-- archive 1.zip
-|-- archive 2.tar.gz
-|-- logo.svg
-`-- README.md</code></pre>
+    <section class="mb-5">
+      <h2 class="mb-4">Web Development</h2>
+      
+      <div class="mb-4">
+        <h5>HTML</h5>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Mi Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hola Mundo&lt;/h1&gt;
+  &lt;p class="text-primary"&gt;PrismJS es asombroso.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
 
-    <pre><code class="language-php">&lt;?php
-// Establecer la conexión a la base de datos
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      <div class="mb-4">
+        <h5>CSS / SCSS</h5>
+        <pre><code class="language-scss">$primary-color: #cf005f;
 
-// Establecer el número de registros por página
-$records_per_page = 5;
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: lighten($primary-color, 20%);
+  
+  & > .item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+}</code></pre>
+      </div>
 
-// Obtener el número total de registros
-$total_records = $conn-&gt;query("SELECT COUNT(*) FROM table_name")-&gt;fetchColumn();
-
-// Calcular el número total de páginas
-$total_pages = ceil($total_records / $records_per_page);
-
-// Obtener la página actual
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
-} else {
-    $page = 1;
+      <div class="mb-4">
+        <h5>JavaScript / TypeScript</h5>
+        <pre><code class="language-typescript">interface User {
+  id: number;
+  name: string;
+  role: 'admin' | 'user';
 }
 
-// Calcular el registro inicial
-$start_from = ($page-1) * $records_per_page;
+const greet = (user: User): string => {
+  return `Hola, ${user.name}! Tu ID es ${user.id}.`;
+};
 
-// Obtener los registros de la tabla
-$stmt = $conn-&gt;prepare("SELECT * FROM table_name LIMIT :start_from, :records_per_page");
-$stmt-&gt;bindParam(':start_from', $start_from, PDO::PARAM_INT);
-$stmt-&gt;bindParam(':records_per_page', $records_per_page, PDO::PARAM_INT);
-$stmt-&gt;execute();
-$results = $stmt-&gt;fetchAll();
+const admin: User = { id: 1, name: 'Pirulug', role: 'admin' };
+console.log(greet(admin));</code></pre>
+      </div>
+    </section>
 
-// Mostrar los registros en una tabla HTML
-echo "&lt;table&gt;";
-foreach ($results as $row) {
-    echo "&lt;tr&gt;";
-    echo "&lt;td&gt;" . $row['column1'] . "&lt;/td&gt;";
-    echo "&lt;td&gt;" . $row['column2'] . "&lt;/td&gt;";
-    echo "&lt;td&gt;" . $row['column3'] . "&lt;/td&gt;";
-    echo "&lt;/tr&gt;";
+    <section class="mb-5">
+      <h2 class="mb-4">Backend & Scripting</h2>
+
+      <div class="mb-4">
+        <h5>Python</h5>
+        <pre><code class="language-python">def fibonacci(n):
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+
+fibonacci(1000)</code></pre>
+      </div>
+
+      <div class="mb-4">
+        <h5>PHP</h5>
+        <pre><code class="language-php">&lt;?php
+class User {
+    public $name;
+    public function __construct($name) {
+        $this->name = $name;
+    }
 }
-echo "&lt;/table&gt;";
 
-// Mostrar enlaces para navegar entre las páginas
-echo "&lt;div class='pagination'&gt;";
-for ($i=1; $i&lt;=$total_pages; $i++) {
-    echo "&lt;a href='pagination.php?page=".$i."'&gt;".$i."&lt;/a&gt;";
-}
-echo "&lt;/div&gt;";
+$me = new User("Pirulug");
+echo "Bienvenido, " . $me->name;
 ?&gt;</code></pre>
+      </div>
+
+      <div class="mb-4">
+        <h5>Bash</h5>
+        <pre><code class="language-bash">#!/bin/bash
+# Un script simple de respaldo
+SOURCE="/var/www/html"
+DEST="/backup/sites"
+DATE=$(date +%Y-%m-%d)
+
+tar -czf $DEST/site-$DATE.tar.gz $SOURCE
+echo "Backup completado el $DATE"</code></pre>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="mb-4">Data & Structures</h2>
+
+      <div class="mb-4">
+        <h5>SQL</h5>
+        <pre><code class="language-sql">SELECT orders.id, users.name, SUM(items.price) as total
+FROM orders
+JOIN users ON orders.user_id = users.id
+WHERE orders.status = 'completed'
+GROUP BY orders.id
+ORDER BY total DESC;</code></pre>
+      </div>
+
+      <div class="mb-4">
+        <h5>JSON</h5>
+        <pre><code class="language-json">{
+  "project": "PrismJS Custom",
+  "version": "0.1.0",
+  "active": true,
+  "features": ["toolbar", "copy-btn", "dark-mode"],
+  "author": {
+    "name": "Pirulug",
+    "github": "pirulug"
+  }
+}</code></pre>
+      </div>
+
+      <div class="mb-4">
+        <h5>Treeview</h5>
+        <pre><code class="language-treeview">root/
+|-- src/
+|   |-- js/
+|   |   `-- app.js
+|   `-- scss/
+|       `-- app.scss
+|-- dist/
+|   |-- js/
+|   `-- css/
+|-- package.json
+`-- README.md</code></pre>
+      </div>
+    </section>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-bs-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      htmlElement.setAttribute('data-bs-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? 'Modo Claro' : 'Modo Oscuro';
+      themeToggle.classList.toggle('btn-outline-secondary', newTheme === 'dark');
+      themeToggle.classList.toggle('btn-outline-primary', newTheme === 'light');
+    });
+  </script>
 </body>
 
 </html>

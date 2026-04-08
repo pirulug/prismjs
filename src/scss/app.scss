@@ -1,23 +1,38 @@
 @import "modules/prism.scss";
 
-// Compatibilidad con Bootstrap theme
-[data-bs-theme="dark"] {
-  code[class*="language-"],
-  pre[class*="language-"] {
-    color: #c3cee3;
-    background: #16191b;
-  }
+code[class*="language-"],
+pre[class*="language-"] {
+  color: var(--prism-text);
+  background: var(--prism-bg);
+  transition: all 0.3s ease;
+}
 
-  pre[class*="language-"] {
-    scrollbar-color: #888 #16191b;
+[data-bs-theme="light"],
+:root:not([data-bs-theme="dark"]) {
+  .code-wrapper {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-color: #e2e8f0;
   }
-
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    background: #16191b;
+  
+  .token {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); // Da un efecto de "relieve" sutil
   }
 }
 
-[data-bs-theme="dark"] .token.keyword { color: #c792ea; }
-[data-bs-theme="dark"] .token.string { color: #c3e88d; }
-[data-bs-theme="dark"] .token.comment { color: #546e7a; font-style: italic; }
+[data-bs-theme="dark"] {
+  pre[class*="language-"] {
+    scrollbar-color: var(--prism-scrollbar) var(--prism-bg);
+  }
+
+  .code-wrapper {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: var(--prism-border);
+  }
+
+  .token {
+    // Un resplandor muy sutil para dar ese toque "neon"
+    &.keyword, &.function, &.string {
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    }
+  }
+}

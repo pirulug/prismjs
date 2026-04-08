@@ -1,5 +1,3 @@
-// _core.scss
-
 code[class*="language-"],
 pre[class*="language-"] {
   text-align: left;
@@ -7,24 +5,18 @@ pre[class*="language-"] {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-
-  // Uso de variables
   color: var(--prism-text);
   background: var(--prism-bg);
-
   font-family: "Google Sans Code", "Victor Mono", "Fira Code", Roboto Mono, monospace;
   font-size: 1em;
   line-height: 1.5em;
-
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -33,12 +25,10 @@ pre[class*="language-"] {
   margin: 0.5em 0;
   overflow: auto;
   border-radius: 0.5rem;
-  border: 1px solid var(--prism-border); // Borde sutil opcional
-
+  border: 1px solid var(--prism-border);
   scrollbar-color: var(--prism-scrollbar) var(--prism-bg);
 }
 
-// Inline code
 :not(pre)>code[class*="language-"] {
   padding: 0.1em 0.3em;
   border-radius: 0.3em;

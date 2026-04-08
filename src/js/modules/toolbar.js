@@ -1,5 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Mapa para nombres bonitos (opcional, si quieres que 'js' diga 'JavaScript')
+/**
+ * PrismJS Toolbar Enhancement
+ * Adds a header with language name and copy-to-clipboard button
+ */
+(function () {
   const langMap = {
     js: "JavaScript",
     ts: "TypeScript",
@@ -9,73 +12,74 @@ document.addEventListener("DOMContentLoaded", () => {
     py: "Python",
     php: "PHP",
     sql: "SQL",
-    java: "Java"
+    java: "Java",
+    bash: "Bash",
+    json: "JSON",
+    treeview: "Treeview",
   };
 
-  // Icono SVG de copiar (Simple y elegante)
-  const copyIcon = `
-    <svg viewBox="0 0 24 24">
-      <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-    </svg>
-  `;
+  const copyIcon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+  const checkIcon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
-  const checkIcon = `
-    <svg viewBox="0 0 24 24">
-      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-    </svg>
-  `;
+  function initToolbar() {
+    const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
 
-  // Seleccionar todos los PRE que son de Prism
-  const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+    codeBlocks.forEach((pre) => {
+      // Prevent double wrapping
+      if (pre.parentElement.classList.contains("code-wrapper")) return;
 
-  codeBlocks.forEach((pre) => {
-    // 1. Encontrar el tipo de lenguaje
-    const codeClass = pre.className.match(/language-(\w+)/);
-    const langKey = codeClass ? codeClass[1] : "Code";
-    const langName = langMap[langKey] || langKey;
+      const codeClass = pre.className.match(/language-(\w+)/);
+      const langKey = codeClass ? codeClass[1] : "Code";
+      const langName = langMap[langKey] || langKey;
 
-    // 2. Crear el Wrapper
-    const wrapper = document.createElement("div");
-    wrapper.className = "code-wrapper";
+      const wrapper = document.createElement("div");
+      wrapper.className = "code-wrapper";
 
-    // 3. Crear el Header
-    const header = document.createElement("div");
-    header.className = "code-header";
+      const header = document.createElement("div");
+      header.className = "code-header";
 
-    // 4. Etiqueta del lenguaje
-    const langSpan = document.createElement("span");
-    langSpan.className = "code-language";
-    langSpan.textContent = langName;
+      const langSpan = document.createElement("span");
+      langSpan.className = "code-language";
+      langSpan.textContent = langName;
 
-    // 5. Botón de Copiar
-    const btn = document.createElement("button");
-    btn.className = "copy-btn";
-    btn.innerHTML = `${copyIcon} Copiar`;
-    btn.title = "Copiar código";
+      const btn = document.createElement("button");
+      btn.className = "copy-btn";
+      btn.type = "button";
+      btn.innerHTML = `${copyIcon} <span>Copiar</span>`;
+      btn.title = "Copiar al portapapeles";
 
-    // Evento Copiar
-    btn.addEventListener("click", () => {
-      const code = pre.querySelector("code").innerText;
+      btn.addEventListener("click", () => {
+        const codeElement = pre.querySelector("code");
+        if (!codeElement) return;
 
-      navigator.clipboard.writeText(code).then(() => {
-        // Feedback visual (Cambiar a Check)
-        btn.innerHTML = `${checkIcon} ¡Copiado!`;
+        const code = codeElement.innerText;
 
-        setTimeout(() => {
-          btn.innerHTML = `${copyIcon} Copiar`;
-        }, 2000);
+        navigator.clipboard.writeText(code).then(() => {
+          btn.classList.add("copied");
+          btn.innerHTML = `${checkIcon} <span>¡Copiado!</span>`;
+
+          setTimeout(() => {
+            btn.classList.remove("copied");
+            btn.innerHTML = `${copyIcon} <span>Copiar</span>`;
+          }, 2000);
+        });
       });
+
+      header.appendChild(langSpan);
+      header.appendChild(btn);
+
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(header);
+      wrapper.appendChild(pre);
     });
+  }
 
-    // 6. Ensamblar todo
-    header.appendChild(langSpan);
-    header.appendChild(btn);
+  // Expose to global scope for dynamic content
+  window.PrismToolbar = { init: initToolbar };
 
-    // Insertar wrapper antes del pre actual
-    pre.parentNode.insertBefore(wrapper, pre);
-
-    // Mover el pre y el header dentro del wrapper
-    wrapper.appendChild(header);
-    wrapper.appendChild(pre);
-  });
-});
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbar);
+  } else {
+    initToolbar();
+  }
+})();

@@ -4,71 +4,74 @@ const { BannerPlugin } = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = {
-  entry: { prism: "./src/js/app.js" },
-  output: {
-    filename: "js/[name].js",
-    path: path.resolve(__dirname, "dist"),
-  },
-  // mode: "development",
-  mode: "production",
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          format: {
-            comments: false, // Elimina otros comentarios
-            preamble: `/*! 
-* Copyright 2025 Pirulug (https://github.com/pirulug)
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === "production";
+
+  return {
+    entry: { prism: "./src/js/app.js" },
+    output: {
+      filename: "js/[name].js",
+      path: path.resolve(__dirname, "dist"),
+    },
+    mode: isProduction ? "production" : "development",
+    devtool: isProduction ? false : "source-map",
+    optimization: {
+      minimize: isProduction,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            format: {
+              comments: false,
+              preamble: `/*! 
+* Copyright 2026 Pirulug (https://github.com/pirulug)
 * PrismJS 1.29.0 (https://prismjs.com)
 * Licensed MIT
 */`,
+            },
           },
-        },
-        extractComments: false,
+          extractComments: false,
+        }),
+      ],
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new BannerPlugin({
+        banner: `/*!
+* Copyright 2026 Pirulug (https://github.com/pirulug)
+* PrismJS 1.29.0 (https://prismjs.com)
+* Licensed MIT
+*/`,
+        raw: true,
+        entryOnly: false,
+      }),
+      new MiniCssExtractPlugin({
+        filename: "css/[name].css",
       }),
     ],
-  },
-  plugins: [
-    // DELETE
-    new CleanWebpackPlugin(),
-
-    // Banner
-    new BannerPlugin({
-      banner: `/*!
-* Copyright 2025 Pirulug (https://github.com/pirulug)
-* PrismJS 1.29.0 (https://prismjs.com)
-* Licensed MIT
-*/`,
-      raw: true,
-      entryOnly: false,
-    }),
-
-    // CSS
-    new MiniCssExtractPlugin({
-      filename: "css/[name].css", // Nombre del archivo CSS
-    }),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: "babel-loader",
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: "babel-loader",
+        },
+        {
+          test: /\.scss$/,
+          use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        },
+        {
+          test: /\.svg$/,
+          use: "svg-inline-loader",
+        },
+      ],
+    },
+    devServer: {
+      static: {
+        directory: path.join(__dirname, "test"),
       },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader, //asd
-          "css-loader",
-          "sass-loader",
-        ],
-      },
-      {
-        test: /\.svg$/,
-        use: "svg-inline-loader",
-      },
-    ],
-  },
+      compress: true,
+      port: 9000,
+      open: true,
+    },
+  };
 };
